@@ -3,7 +3,7 @@ package com.systemkern.kommons
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-internal class MapToSetTest {
+private class MapToSetTest {
 
     @Test fun `Can map to Set`() {
         val a = listOf(1, 2, null, 3, 3, null)

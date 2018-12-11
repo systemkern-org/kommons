@@ -3,7 +3,7 @@ package com.systemkern.kommons
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-internal class FlattenTest {
+private class FlattenTest {
 
     @Test fun `Can flatten lists`() {
         val a = listOf(1, 2, 3)
@@ -15,5 +15,4 @@ internal class FlattenTest {
         assertThat(joinedList).containsAll(b)
         assertThat(joinedList).containsOnly(*listOf(a, b).flatten().toTypedArray())
     }
-
 }
