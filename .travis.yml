@@ -1,0 +1,21 @@
+sudo: required
+
+language: java
+jdk: oraclejdk8
+
+services:
+  - docker
+
+cache:
+  directories:
+  - $HOME/.m2
+
+script:
+# -B batch mode makes Maven less verbose
+  - mvn -B clean verify
+
+deploy:
+  skip-cleanup: true
+  keep-history: false
+  on:
+    branch: master
