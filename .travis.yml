@@ -31,5 +31,5 @@ deploy:
         - kommons/target/kommons-$project_version.jar
     skip_cleanup: true
     on:
-        repo: phillip-kruger/apiee
+        repo: systemkern/kommons
     name: $project_version
