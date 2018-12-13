@@ -8,3 +8,6 @@ Kotlin official library.
 
 Packages
 --------
+All packages are subpackages of **com.systemkern.kommons**
+
+### collections

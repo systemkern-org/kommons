@@ -1,11 +1,11 @@
-package com.systemkern.kommons
+package com.systemkern.kommons.collections
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 private class FlattenTest {
 
-    @Test fun `Can flatten lists`() {
+    @Test fun `Can flatten multiple lists`() {
         val a = listOf(1, 2, 3)
         val b = listOf(4, 5, 6)
 

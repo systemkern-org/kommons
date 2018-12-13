@@ -1,4 +1,4 @@
-package com.systemkern.kommons
+package com.systemkern.kommons.collections
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test

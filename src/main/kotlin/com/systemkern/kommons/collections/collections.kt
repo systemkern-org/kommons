@@ -1,9 +1,9 @@
-package com.systemkern.kommons
+package com.systemkern.kommons.collections
 
 /**
  * Returns a new read-only list of all elements of the given collections
  * The returned list is serializable (JVM).
- * since 0.2-SNAPSHOT
+ * @since 0.2-SNAPSHOT
  */
 fun <T> flatten(vararg elements: List<T>): List<T> =
     elements.flatMap { it }
