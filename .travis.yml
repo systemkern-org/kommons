@@ -19,8 +19,8 @@ script:
   - mvn -B clean verify
 
 after_success:
-  - curl -T \$TRAVIS_BUILD_DIR/kommons-$project_version.jar -u \${snapsot-ftp-user}:\${snapshot-ftp-password} ftp://\${snapshot-ftp-server}/
-
+  - curl -T $TRAVIS_BUILD_DIR/kommons/target/kommons-0.2-SNAPSHOT.jar ftp://${snapsot-ftp-user}:${snapshot-ftp-password}${snapshot-ftp-server}/
+  
 ## Create release in GitHub    
 deploy:
     provider: releases
