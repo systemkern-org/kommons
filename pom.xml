@@ -180,7 +180,7 @@
         <repository>
             <id>systemkern-snapshots-ftp</id>
             <layout>default</layout>
-            <url>${env.snapsot-ftp-user}:${env.snapshot-ftp-password}@${env.snapshot-ftp-server}</url>
+            <url>ftp://ftp12943611-systemkern@systemkern.com/repo</url>
             <uniqueVersion>false</uniqueVersion>
         </repository>
         <downloadUrl>http://repo.systemkern.com</downloadUrl>
