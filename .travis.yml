@@ -8,19 +8,7 @@ services:
 
 script:
 # -B batch mode makes Maven less verbose
-- mvn -B clean deploy
-
-after_success:
-- cp $TRAVIS_BUILD_DIR/core/target/generated-docs/module-core.html $TRAVIS_BUILD_DIR/index.html
-- cp $TRAVIS_BUILD_DIR/user-profile/target/generated-docs/module-core.html $TRAVIS_BUILD_DIR/user-profile.html
-
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep-history: false
-  on:
-    branch: master
-
-  # To generate GITHUB_TOKEN: Click in right upper options menu -> settings -> Developer settings ->
-  # Personal access tokens -> Generate new token
+- mkdir target
+# Create a custom settings xml which pulls the FTP Username and Password from the environment variable
+- echo "<settings><localRepository>~/.m2/repository</localRepository><servers><server><id>systemkern-snapshots-ftp</id><username>$FTP_USER</username><password>$FTP_PASS</password></server></servers></settings>" > target/settings.xml
+- mvn -B -s target/settings.xml clean deploy # -B batch mode makes Maven less verbose
