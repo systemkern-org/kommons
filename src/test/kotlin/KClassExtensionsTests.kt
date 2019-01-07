@@ -1,28 +1,23 @@
-package systemkern.extensions
+package com.systemkern.kommons
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.util.*
-import javax.persistence.Id
 
 internal class KClassExtensionsTests {
 
     @Test fun `Can get class properties`() {
-        val expectedFields = listOf("version", "str", "obj")
-        val idFields = listOf("id", "userId")
-
-        val ret = MyDataClass::class.getEntityProperties()
+        val ret = MyDataClass::class.entityProperties
 
         with(ret.map { it.name }) {
-            assertThat(this).containsAll(expectedFields)
-            assertThat(this).doesNotContainAnyElementsOf(idFields)
+            assertThat(this).contains("version", "str", "obj")
+            assertThat(this).doesNotContain("id")
         }
     }
 
 }
 
 private data class MyDataClass(
-    @Id private val userId: Long,
     private val id: Long,
     private val version: Long = 0L,
     private val str: String,

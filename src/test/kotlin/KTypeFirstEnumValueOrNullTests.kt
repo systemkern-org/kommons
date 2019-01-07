@@ -1,36 +1,34 @@
-package systemkern.extensions
+package com.systemkern.kommons
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import kotlin.reflect.KType
-import kotlin.reflect.full.createType
 import kotlin.reflect.full.starProjectedType
 
 
 internal class EnumerationsTests {
 
     @Test fun `Can determine lower case enums first value`() {
-        val ret = LowerCase::class.starProjectedType.firstEnumValueOrNull()
+        val ret = LowerCase::class.starProjectedType.firstEnumValueOrNull
         assertThat(ret.toString()).isEqualTo("value1")
     }
 
     @Test fun `Can determine upper case enums first value`() {
-        val ret = UpperCase::class.starProjectedType.firstEnumValueOrNull()
+        val ret = UpperCase::class.starProjectedType.firstEnumValueOrNull
         assertThat(ret.toString()).isEqualTo("VALUE1")
     }
 
     @Test fun `Can determine camel case enums first value`() {
-        val ret = CamelCase::class.starProjectedType.firstEnumValueOrNull()
+        val ret = CamelCase::class.starProjectedType.firstEnumValueOrNull
         assertThat(ret.toString()).isEqualTo("SomeValue")
     }
 
     @Test fun `Can determine custom value enums first value`() {
-        val ret = CustomValueString::class.starProjectedType.firstEnumValueOrNull()
+        val ret = CustomValueString::class.starProjectedType.firstEnumValueOrNull
         assertThat(ret.toString()).isEqualTo("VALUE1")
     }
 
     @Test fun `Can determine underscore enums first value`() {
-        val ret = Underscore::class.starProjectedType.firstEnumValueOrNull()
+        val ret = Underscore::class.starProjectedType.firstEnumValueOrNull
         assertThat(ret.toString()).isEqualTo("Some_Value")
     }
 

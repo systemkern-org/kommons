@@ -1,4 +1,4 @@
-package systemkern.extensions
+package com.systemkern.kommons
 
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty1
@@ -8,19 +8,19 @@ private val halIgnoreFields = setOf(
     "com.fasterxml.jackson.annotation.JsonIgnore"
 )
 
-internal fun <T : Any> KClass<T>.getEntityProperties(): List<KProperty1<T, *>> =
-    declaredMemberProperties
-        .filter { it.name != "id" }
+val <T : Any> KClass<T>.entityProperties: List<KProperty1<T, *>>
+    get() = declaredMemberProperties
+        .filterNot { it.name == "id" }
         .filterNot { it.isHalRelevant() }
         .filterNot {
-            it.annotations.any {
-                it.annotationClass.qualifiedName in halIgnoreFields
-            }
+            it.annotations
+                .map { it.annotationClass.qualifiedName }
+                .any { it in halIgnoreFields }
         }
 
 
-internal fun <T : Any> KClass<T>.getHALRelevantProperties(): List<KProperty1<T, *>> =
-    declaredMemberProperties
+val <T : Any> KClass<T>.HALRelevantProperties: List<KProperty1<T, *>>
+    get() = declaredMemberProperties
         .filter { it.name != "id" }
         .filter { it.isHalRelevant() }
 
@@ -33,7 +33,7 @@ private val halRelevantAnnotationClasses = setOf(
 )
 
 private fun <T : Any> KProperty1<T, *>.isHalRelevant(): Boolean =
-    (this.returnType.isCollection() // return all collections
+    (this.returnType.isCollection // return all collections
         // all entity classes
         || (this.returnType.classifier as KClass<*>)
         .annotations

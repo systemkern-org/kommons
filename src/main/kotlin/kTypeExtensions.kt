@@ -1,10 +1,10 @@
-package systemkern.extensions
+package com.systemkern.kommons
 
 import kotlin.reflect.KClass
 import kotlin.reflect.KType
 import kotlin.reflect.full.withNullability
 
-internal val defaultCollectionInstance = mapOf(
+val defaultCollectionInstance = mapOf(
     "kotlin.collections.Array" to "arrayOf()",
     "kotlin.collections.Collection" to "setOf()",
     "kotlin.collections.Iterable" to "setOf()",
@@ -21,7 +21,7 @@ internal val defaultCollectionInstance = mapOf(
     "java.util.SortedMap" to "sortedMapOf()"
 )
 
-internal val defaultInstance = mapOf(
+val defaultInstance = mapOf(
     "kotlin.String" to "\"example_string\"",
     "kotlin.Boolean" to "false",
     "kotlin.Int" to "0",
@@ -39,26 +39,26 @@ internal val defaultInstance = mapOf(
     *defaultCollectionInstance.array()
 )
 
-internal fun KType.simpleName(): String =
-    "${this.withNullability(false)}"
+val KType.simpleName: String
+    get() = "${this.withNullability(false)}"
         .substringAfterLast(".")
         .substringBefore("<")
         .substringBefore(">")
 
-internal fun KType.isCollection(): Boolean =
-    this.collectionInstantiatorOrNull() != null
+val KType.isCollection: Boolean
+    get() = this.collectionInstantiatorOrNull != null
 
-internal fun KType.collectionInstantiatorOrNull(): String? {
-    return defaultCollectionInstance[this.toString().substringBefore("<")]
-        ?: listOf("Array", "List", "SortedMap", "SortedSet", "Set")
-            .firstOrNull {
-                this.toString().contains(it, ignoreCase = true)
-            }
-            ?.let { "${it[0].toLowerCase()}${it.substring(1)}Of()" }
-}
+val KType.collectionInstantiatorOrNull: String?
+    get() =
+        defaultCollectionInstance[this.toString().substringBefore("<")]
+            ?: listOf("Array", "List", "SortedMap", "SortedSet", "Set")
+                .firstOrNull {
+                    this.toString().contains(it, ignoreCase = true)
+                }
+                ?.let { "${it[0].toLowerCase()}${it.substring(1)}Of()" }
 
-fun KType.firstEnumValueOrNull(): Any? =
-    (this.classifier as KClass<*>).java.enumConstants?.first()
+val KType.firstEnumValueOrNull: Any?
+    get() = (this.classifier as KClass<*>).java.enumConstants?.first()
 
 private fun <K, V> Map<K, V>.pairs() =
     this.map { it.key to it.value }
