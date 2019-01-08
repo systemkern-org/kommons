@@ -25,7 +25,7 @@
         <kotlin.version>1.2.71</kotlin.version>
 
         <!-- Maven plugin versions -->
-        <org.apache.maven.wagon.wagon-ftp.version>1.0-beta-6</org.apache.maven.wagon.wagon-ftp.version>
+        <wagon-ftp.version>1.0-beta-6</wagon-ftp.version>
 
         <!-- Build properties -->
         <FTP_USER>please-set-ftp-user-correctly</FTP_USER>
@@ -176,7 +176,7 @@
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
                 <artifactId>wagon-ftp</artifactId>
-                <version>${org.apache.maven.wagon.wagon-ftp.version}</version>
+                <version>${wagon-ftp.version}</version>
             </extension>
         </extensions>
     </build>
