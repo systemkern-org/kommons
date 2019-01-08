@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 import java.math.BigDecimal
 import java.math.RoundingMode.HALF_EVEN
 
-internal class PrimitivesTest {
+internal class PrimitiveExtensionTests {
 
     @Test fun `Can get BigDecimal from Double`() {
         assertThat(10.0.bd).isEqualTo(BigDecimal.TEN.setScale(1))
