@@ -16,4 +16,4 @@ script:
 # - mkdir target
 # Create a custom settings xml which pulls the FTP Username and Password from the environment variable
 - echo "<settings><localRepository>~/.m2/repository</localRepository><servers><server><id>systemkern-snapshots-ftp</id><username>$FTP_USER</username><password>$FTP_PASS</password></server></servers></settings>" > target/settings.xml
-- mvn -B clean deploy # -B batch mode makes Maven less verbose
+- mvn -B -s target/settings.xml clean deploy # -B batch mode makes Maven less verbose
