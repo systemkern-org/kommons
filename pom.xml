@@ -174,7 +174,7 @@
         <snapshotRepository>
             <name>Systemkern Snapshot Repository</name>
             <id>systemkern-snapshots-ftp</id>
-            <url>ftp://${evn.FTP_USER}:${env.FTP_PASS}@wp12943611.server-he.de</url>
+            <url>ftp://${env.FTP_USER}:${env.FTP_PASS}@${env.FTP_SERVER}</url>
             <layout>default</layout>
             <uniqueVersion>false</uniqueVersion>
         </snapshotRepository>
