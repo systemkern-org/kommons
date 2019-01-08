@@ -148,13 +148,6 @@
                 </executions>
             </plugin>
 
-            <!-- Run Junit Tests
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.1</version>
-            </plugin>
-            -->
-
             <!-- export javadoc -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -177,12 +170,13 @@
     </build>
 
     <distributionManagement>
-        <repository>
-            <id>systemkern-snapshots-ftp</id>
-            <layout>default</layout>
-            <url>ftp://ftp12943611-systemkern@systemkern.com/repo</url>
-            <uniqueVersion>false</uniqueVersion>
-        </repository>
         <downloadUrl>http://repo.systemkern.com</downloadUrl>
+        <snapshotRepository>
+            <name>Systemkern Snapshot Repository</name>
+            <id>systemkern-snapshots-ftp</id>
+            <url>ftp://${FTP_USER}:${FTP_PASS}@wp12943611.server-he.de</url>
+            <layout>default</layout>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
     </distributionManagement>
 </project>
