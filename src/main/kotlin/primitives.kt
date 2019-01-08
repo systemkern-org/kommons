@@ -35,4 +35,4 @@ inline val Long.d: Double get() = this.toDouble()
 inline val Long.i: Int get() = this.toInt()
 
 /** The Char array representing by this string */
-inline val String.chars: Array<Char> get() = this.toCharArray().toTypedArray()
+inline val String.ch: Array<Char> get() = this.toCharArray().toTypedArray()

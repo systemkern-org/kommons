@@ -78,4 +78,8 @@ internal class PrimitivesTest {
     @Test fun `Can get Integer from Long`() {
         assertThat(10L.i).isEqualTo(10L)
     }
+
+    @Test fun `Can get CharArray from String`() {
+        assertThat("abc".ch).contains('a','b','c')
+    }
 }
