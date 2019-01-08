@@ -6,6 +6,11 @@ language: java
 services:
 - docker
 
+cache:
+  directories:
+  - .autoconf
+  - $HOME/.m2
+
 script:
 # -B batch mode makes Maven less verbose
 - mkdir target
