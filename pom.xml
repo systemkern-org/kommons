@@ -186,7 +186,7 @@
         <snapshotRepository>
             <name>Systemkern Snapshot Repository</name>
             <id>systemkern-snapshots-ftp</id>
-            <url>ftp://sytemkern.com</url>
+            <url>ftp://systemkern.com</url>
             <layout>default</layout>
             <uniqueVersion>false</uniqueVersion>
         </snapshotRepository>
