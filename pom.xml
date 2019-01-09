@@ -28,10 +28,6 @@
         <!-- Maven plugin versions -->
         <wagon-ftp.version>1.0-beta-6</wagon-ftp.version>
 
-        <!-- Build properties -->
-        <FTP_USER>please-set-ftp-user-correctly</FTP_USER>
-        <FTP_PASS>please-set-ftp-password-correctly</FTP_PASS>
-
         <javax-persistence-api.version>2.2</javax-persistence-api.version>
     </properties>
 
