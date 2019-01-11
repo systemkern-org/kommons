@@ -18,5 +18,5 @@ cache:
     - ~/.m2/repository
 
 after_success:
-  - ./cd/before-deploy.sh
-  - ./cd/deploy.sh
+  - ./deployment/before-deploy.sh
+  - ./deployment/deploy.sh
