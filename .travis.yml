@@ -1,4 +1,4 @@
-language: kotlin
+language: java
 env:
   global:
     - secure: "the base64 string from when you encrypted OSSRH_JIRA_USERNAME"
