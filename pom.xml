@@ -26,7 +26,7 @@
         <kotlin.version>1.2.51</kotlin.version>
 
         <!-- Maven plugin versions -->
-        <wagon-ftp.version>2.0</wagon-ftp.version>
+        <wagon-ftp.version>3.3.1</wagon-ftp.version>
 
         <javax-persistence-api.version>2.2</javax-persistence-api.version>
     </properties>
