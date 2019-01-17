@@ -2,6 +2,14 @@ package com.systemkern.kommons
 
 import java.math.BigDecimal
 
+inline val Boolean.int: Int get() = if (this) 1 else 0
+
+inline fun <T> Boolean.ifTrue(block: () -> T?): T? =
+    if (this) block() else null
+
+inline fun <T> Boolean.ifFalse(block: () -> T?): T? =
+    if (!this) block() else null
+
 inline val Int.bd: BigDecimal get() = this.toBigDecimal().setScale(0)
 
 inline val Int.d: Double get() = this.toDouble()

@@ -7,6 +7,35 @@ import java.math.RoundingMode.HALF_EVEN
 
 internal class PrimitiveExtensionTests {
 
+    @Test fun `Can execute ifTrue-lambda only if boolean is true`() {
+        var executed = false
+        true.ifTrue { executed = true }
+        assertThat(executed).isTrue()
+    }
+
+    @Test fun `Cannot execute ifTrue-lambda if boolean is false`() {
+        var executed = false
+        false.ifTrue { executed = true }
+        assertThat(executed).isFalse()
+    }
+
+    @Test fun `Can execute ifFalse-lambda only if boolean is false`() {
+        var executed = false
+        false.ifFalse { executed = true }
+        assertThat(executed).isTrue()
+    }
+
+    @Test fun `Cannot execute ifFalse-lambda if boolean is true`() {
+        var executed = false
+        true.ifFalse { executed = true }
+        assertThat(executed).isFalse()
+    }
+
+    @Test fun `Can get Int from Boolean`() {
+        assertThat(true.int).isEqualTo(1)
+        assertThat(false.int).isEqualTo(0)
+    }
+
     @Test fun `Can get BigDecimal from Double`() {
         assertThat(10.0.bd).isEqualTo(BigDecimal.TEN.setScale(1))
     }
@@ -80,6 +109,6 @@ internal class PrimitiveExtensionTests {
     }
 
     @Test fun `Can get CharArray from String`() {
-        assertThat("abc".ch).contains('a','b','c')
+        assertThat("abc".ch).contains('a', 'b', 'c')
     }
 }
