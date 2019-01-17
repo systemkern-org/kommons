@@ -9,33 +9,38 @@ internal class EnumerationsTests {
 
     @Test fun `Can determine lower case enums first value`() {
         val ret = LowerCase::class.starProjectedType.firstEnumValueOrNull
+        assertThat(ret).isNotNull
         assertThat(ret.toString()).isEqualTo("value1")
     }
 
     @Test fun `Can determine upper case enums first value`() {
         val ret = UpperCase::class.starProjectedType.firstEnumValueOrNull
+        assertThat(ret).isNotNull
         assertThat(ret.toString()).isEqualTo("VALUE1")
     }
 
     @Test fun `Can determine camel case enums first value`() {
         val ret = CamelCase::class.starProjectedType.firstEnumValueOrNull
+        assertThat(ret).isNotNull
         assertThat(ret.toString()).isEqualTo("SomeValue")
     }
 
     @Test fun `Can determine custom value enums first value`() {
         val ret = CustomValueString::class.starProjectedType.firstEnumValueOrNull
+        assertThat(ret).isNotNull
         assertThat(ret.toString()).isEqualTo("VALUE1")
     }
 
     @Test fun `Can determine underscore enums first value`() {
         val ret = Underscore::class.starProjectedType.firstEnumValueOrNull
+        assertThat(ret).isNotNull
         assertThat(ret.toString()).isEqualTo("Some_Value")
     }
 
-/*    @Test fun `Can get null for non enum type`() {
-        val ret = AbstractCodeGenerator::class.starProjectedType.firstEnumValueOrNull()
+    @Test fun `Can get null for non enum type`() {
+        val ret = Any::class.starProjectedType.firstEnumValueOrNull
         assertThat(ret).isNull()
-    }*/
+    }
 
 }
 

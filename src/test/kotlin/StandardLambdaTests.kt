@@ -42,33 +42,27 @@ private class StandardLambdaTests {
     }
 
     @Test fun `Can execute letIfTrue-lambda if condition is true`() {
-        val orig = Any()
         val second = Any()
-        val res = orig.letIfTrue(true) { second }
+        val res = Any().letIfTrue(true) { second }
 
         assertThat(res).isEqualTo(second)
     }
 
     @Test fun `Cannot execute letIfTrue-lambda if condition is false`() {
-        val orig = Any()
-        val second = Any()
-        val res = orig.letIfTrue(false) { second }
+        val res = Any().letIfTrue(false) { Any() }
 
         assertThat(res).isNull()
     }
 
     @Test fun `Can execute letIfFalse-lambda if condition is true`() {
-        val orig = Any()
         val second = Any()
-        val res = orig.letIfFalse(false) { second }
+        val res = Any().letIfFalse(false) { second }
 
         assertThat(res).isEqualTo(second)
     }
 
     @Test fun `Cannot execute letIfFalse-lambda if condition is false`() {
-        val orig = Any()
-        val second = Any()
-        val res = orig.letIfFalse(true) { second }
+        val res = Any().letIfFalse(true) { Any() }
 
         assertThat(res).isNull()
     }
