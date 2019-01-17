@@ -139,6 +139,7 @@
     </dependencies>
 
     <build>
+        <defaultGoal>clean verify</defaultGoal>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
         <testSourceDirectory>src/test/kotlin</testSourceDirectory>
         <plugins>

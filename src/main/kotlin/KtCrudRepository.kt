@@ -21,7 +21,7 @@ interface KtCrudRepository<T, ID : Serializable> : CrudRepository<T, ID> {
 
     @Deprecated(
         message = "Java Optional is not the preferable way to handle database returns in Kotlin",
-        replaceWith = ReplaceWith("systemkern.spring.KtCrudRepository.findById2(id)")
+        replaceWith = ReplaceWith("com.systemkern.kommons.KtCrudRepository.findById2(id)")
     )
     override fun findById(id: ID): Optional<T>
 

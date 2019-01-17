@@ -23,7 +23,7 @@ const val basepackage = "com.systemkern.kommons"
 @ComponentScan(basePackages = [basepackage])
 @EnableJpaRepositories(basePackages = [basepackage])
 @EntityScan(basePackages = [basepackage])
-private class KtCrudRepositoryTests {
+internal class KtCrudRepositoryTests {
 
     @Autowired
     lateinit var repo: KtCrudDataTestRepository
@@ -54,10 +54,10 @@ private class KtCrudRepositoryTests {
 }
 
 @Entity
-private data class KtCrudData(
+internal data class KtCrudData(
     @Id val id: Long,
     val string: String = ""
 )
 
 @Repository
-private interface KtCrudDataTestRepository : KtCrudRepository<KtCrudData, Long>
+internal interface KtCrudDataTestRepository : KtCrudRepository<KtCrudData, Long>
