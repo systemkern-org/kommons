@@ -5,9 +5,19 @@ env:
     - # ^^ OSSRH_JIRA_USERNAME
     - secure: "the base64 string from when you encrypted OSSRH_JIRA_PASSWORD"
     - # ^^ OSSRH_JIRA_PASSWORD
-    - secure: "the base64 string from when you encrypted GPG_KEY_NAME"
+    - secure: "e1k2vZw6cCmmzzoYLW2Y2anXUnWCKjH7O6GxOidykUfRLL2khGRsmlwDrbXE4QeswCSQNVbu49dTe1wPblxRHW0u+HvRWTftblokrAaoiAlA5
+              4c3IbgXQQHsPfi+DHka8XTt+K/I2Az4Xsb6uz2HkMRUke+e3MYuqqOVEQU3Yr1iQ5sYxMsn55fNwBoUthczWmfPu5n9o20+VWBdXNBNoW/7faJMUyjrq0Wf9
+              0zSDH4uR5buzNG4j9d7Ews0xY0jxPFVp26oJRSu7o/aLU5l/xkAZro8MHoK6T/5aH1yNaCG2TgsbpvdXQ8sNjYBTsUZbxSDBN47wlzKM5ahWki7qKMt5bbn7
+              Eq21JGqi+ZdWM6Nu3eahpDov5cM0MobfdYysgw8jMqC9/tXStoQDBhDcc/1xrkQTsdrVYLCsSZJKjfaY/pvq6gsoC0QASFKY3XsE3CH7FzxYrEUIeOvwfVS/
+              brSvsjwZ1jJ/jAekWwgEtvii/yus9nDSVShgYr4jqhGLM5MxlZa9AaJmCmO5T+6r6cp7ssPw5bua2Hq9BNCKlolhd5p+jMheLzrBcbZrSRoDT2eoOYHqr5ZZ
+              IIuu7n1B1C7N96CrCQHl4vO932hfwkh7Rn/Xsbc4HHQiaypqxOJSXv3+z5kpHOPbM5znGGeu+0cHpOIWJgowb9IYk8Nie4="
     - # ^^ GPG_KEY_NAME
-    - secure: "the base64 string from when you encrypted GPG_PASSPHRASE"
+    - secure: "poFncm2x6Ez24Mfg1Q7yubz/ZU24BJycNIReyIwSqqUra91JtopfFk5Yk5ucpPqW3LfFOrjfGNn4jIh2EWvPuSx6+fBhOES0NPaH3b+g1YF0S
+              KM9XBV64thzCL+ySIC3rkztXg4+y7a3/xGUPYmXMWHKiusRoPxRYfRu4/Riku4XMnaPDpfpAVeBb07XJgqs2SKB95InCJXs9tS+ybB6I+W7GEhLZHSec5bfe
+              DSSoRpNaECC3KMWeMD2SBoLGD+sEVEj9qXRF5m0OMuRYvdYgnK3G4zeOx8uCqR++W1duMGTd0lSVp/2pQZM3zbgecW2j0h9prWlnApA1MP6vcue0lvjO1+b9
+              e4LEHwWe+qg88+Lx7Jno+BeRJHnoKsZLcsP/m2OfXz/qk0YO8oAHvvbG9Io8xN2mmbwu8FWlbju28DyTArMo5UO3dj4et+cFRhTC1GXQbDzYHHzP0eAqsf2n
+              xEL2nJr98SlluH6gr8pJ2DB99pzend2Bqosl+3umdx4wBPxeP0dwh3yNGLlEF5BAIGC9uyBH6tvP4U12mYEOUYuRtZb0KQi7M2kl3Bi2t5jcoulfA1fwFZ2G
+              sinxtSiSLPYN8WHInSpjvCOnBA+PjjrIGxhYvbzFGqa9j8dVAL1HVnnuF1VVcC1Sl7JSfIupJrqP6Un7Zh2nWJezS+z2Lo="
     - # ^^ GPG_PASSPHRASE
 
 install: mvn install -P !build-extras -DskipTests=false -Dmaven.javadoc.skip=true -B -V
