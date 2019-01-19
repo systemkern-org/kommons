@@ -3,7 +3,7 @@ package com.systemkern.kommons
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-private class StandardLambdaTests {
+internal class StandardLambdaTests {
 
     @Test fun `Can execute alsoIfTrue-lambda if condition is true`() {
         val orig = Any()
