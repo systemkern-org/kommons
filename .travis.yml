@@ -30,8 +30,8 @@ env:
               sinxtSiSLPYN8WHInSpjvCOnBA+PjjrIGxhYvbzFGqa9j8dVAL1HVnnuF1VVcC1Sl7JSfIupJrqP6Un7Zh2nWJezS+z2Lo="
     - # ^^ GPG_PASSPHRASE
 
-install: mvn install -P !build-extras -DskipTests=false -Dmaven.javadoc.skip=true -B -V
-script: mvn test -P !build-extras -B
+install: mvn install --activate-profiles !build-extras -DskipTests=false -Dmaven.javadoc.skip=true --batch-mode --show-version
+script: mvn test --activate-profiles !build-extras --batch-mode
 
 cache:
   directories:
