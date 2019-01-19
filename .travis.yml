@@ -1,9 +1,19 @@
 language: java
 env:
   global:
-    - secure: "the base64 string from when you encrypted OSSRH_JIRA_USERNAME"
+    - secure: "BxqgS1ZyQ8CugBmp1zDIbFNLFkX7EHK9OjRKlrndTYQuRR1kd1QNpOGEDGZO+Sp+xUBIm9CQBBzjUkil3E5SsHek32WCdKzhKKUTEbGywngfk
+              3zP0i3xINeKwlwyv8iJXijZuBvgSBp/mqvAMyP03/TTBKrdhFehxGaKvZ+EUwAVU01vsCaZqTd97yj6C4OwLiUX9gZpJtxPfNVQYgo+m7tvp4UqPPFTZf6d2
+              Lu/lIM+Xa0hiXk6enHlb843WWfjK6BX1uzKH8V68avt3VPQ0f8y9AC44VfK/biGwbFKJSfhglt4YF51nZzM0CxvKTgyxPdy3NG3mCu8jGijirxeIJdWtReGp
+              MWcjYgAy5NPtHA5kQ5+0ygMjojRal+kS1xeMeVH/xL89Lzkudj2jA/iLrpFflsBaSs69JY5ZR4WDkHhYNVFZDN/9PjbVf/uGb4BUzNinDEnGm3TeH+8vPCQM
+              G4wranxxg6kv/L95Ol4nJcXuSh6i1dFgzk1jDI7dLKhgxuv2Lr87bPhACtxtT3a7YGN2pv6Bvq/ljTX2w51MX1qyv8Ai1yw8jaknQaKGEJ9SSfIQR0rj4DTq
+              abvOwXcK/2Q2C+CfOqyhI1E+B6nSRyq2FCskd90t0aVOaX2dRdN6fRC/EY4pwbXrN8rj3MJLYJV/cP658CxGygi6pGEc2c="
     - # ^^ OSSRH_JIRA_USERNAME
-    - secure: "the base64 string from when you encrypted OSSRH_JIRA_PASSWORD"
+    - secure: "o/U9NiG+0Z7UawyC8sajYdYdl+6EUY5x7du2lAwnVdHWfF7jEd1p190FXQnJs/ClOx9G9stIOOlSMSHzUjFalHcamUj0AE1n8PW9H2kmtS8k0
+              aHxdRlRpuzH0XRbxHqtMk6qVYiwDfEf4tMRtKjQk/DCFZXfU640QXnt3RqjZEJdJTuozYqbrsvo0xN0EagEAftjm4rUm0qYfYgLUq/+rauaFgLBuJzWvVMc/
+              gyG7tt3rQ4libkb/i2ZeGqf2Nmi7lxRLAXSOMV0HX04WMjpik0LckMPMO20EBfmQcaYvsx7dvnKbmesjd8mN9CLMWz85rhFFp3VMPcjWg4JjrHQEssP8AzTL
+              OIc+YBKf3pfs++LhVPMWQE3oT4BMjSmrt8mFu2ZwMX64H8lTBadchl8O3okU/6x61BZ8//TlhiYTUw6G1qjFAaaQBhF6NmdVt7Ioo4mgXeOfOgVQnHRhGQhC
+              cMHIsxw1ZsEC7rmNJMnPpY/axrf8jWuY5SCeyRIJ3XSlGgK2QlvNpERJfnW58g31vk4yFClbDzW/DYrPvrzz9KIKC7XqOZ+pOjnlPK5SzcecjArot1iJLFIB
+              95SsWgUKp80I/hcuu6xehsw+HYBz0cxLmGGjJHf9W8YUAgoSwcSChwMgBhccjl0qMrFeLA+ZIsT1YJMa+UnZ6hHN2BnshU="
     - # ^^ OSSRH_JIRA_PASSWORD
     - secure: "e1k2vZw6cCmmzzoYLW2Y2anXUnWCKjH7O6GxOidykUfRLL2khGRsmlwDrbXE4QeswCSQNVbu49dTe1wPblxRHW0u+HvRWTftblokrAaoiAlA5
               4c3IbgXQQHsPfi+DHka8XTt+K/I2Az4Xsb6uz2HkMRUke+e3MYuqqOVEQU3Yr1iQ5sYxMsn55fNwBoUthczWmfPu5n9o20+VWBdXNBNoW/7faJMUyjrq0Wf9
