@@ -7,9 +7,6 @@
 *.ap_
 *.aab
 
-# Files for the ART/Dalvik VM
-*.dex
-
 # Java class files
 *.class
 
@@ -488,6 +485,11 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
+
+# Keyfiles for deployment to maven central
+*.asc
+*.ppk
+public-key
 
 ### OSX ###
 # General
