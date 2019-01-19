@@ -1,4 +1,4 @@
-language: java
+language: kotlin
 env:
   global:
     - secure: "BxqgS1ZyQ8CugBmp1zDIbFNLFkX7EHK9OjRKlrndTYQuRR1kd1QNpOGEDGZO+Sp+xUBIm9CQBBzjUkil3E5SsHek32WCdKzhKKUTEbGywngfk
