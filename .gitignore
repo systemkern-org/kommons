@@ -7,9 +7,6 @@
 *.ap_
 *.aab
 
-# Files for the ART/Dalvik VM
-*.dex
-
 # Java class files
 *.class
 
@@ -489,6 +486,11 @@ buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
 
+# Keyfiles for deployment to maven central
+*.asc
+*.ppk
+public-key
+
 ### OSX ###
 # General
 
@@ -799,6 +801,3 @@ iOSInjectionProject/
 **/build/
 
 # End of https://www.gitignore.io/api/osx,java,sass,unity,xcode,macos,maven,linux,matlab,gradle,kotlin,ionic3,android,angular,windows,eclipse,java-web,intellij,reactnative,androidstudio,xcodeinjection
-*.asc
-*.ppk
-public-key
