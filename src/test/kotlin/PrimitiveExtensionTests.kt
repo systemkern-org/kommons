@@ -3,6 +3,7 @@ package com.systemkern.kommons
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.math.BigDecimal
+import java.math.MathContext
 import java.math.RoundingMode.HALF_EVEN
 
 internal class PrimitiveExtensionTests {
@@ -110,5 +111,11 @@ internal class PrimitiveExtensionTests {
 
     @Test fun `Can get CharArray from String`() {
         assertThat("abc".ch).contains('a', 'b', 'c')
+    }
+
+    @Test fun `Can get String from any object`() {
+        assertThat(Any().s).contains("java.lang.Object@")
+        assertThat(MathContext(1).s).isEqualTo("precision=1 roundingMode=HALF_UP")
+        assertThat(listOf<Boolean>().s).isEqualTo("[]")
     }
 }

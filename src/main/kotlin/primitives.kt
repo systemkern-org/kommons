@@ -2,12 +2,15 @@ package com.systemkern.kommons
 
 import java.math.BigDecimal
 
+/** Shortcut to the toString() method */
+inline val <T> T.s: String get() = this.toString()
+
 inline val Boolean.int: Int get() = if (this) 1 else 0
 
-inline fun <T> Boolean.ifTrue(block: () -> T?): T? =
+inline infix fun <T> Boolean.ifTrue(block: () -> T?): T? =
     if (this) block() else null
 
-inline fun <T> Boolean.ifFalse(block: () -> T?): T? =
+inline infix fun <T> Boolean.ifFalse(block: () -> T?): T? =
     if (!this) block() else null
 
 inline val Int.bd: BigDecimal get() = this.toBigDecimal().setScale(0)
