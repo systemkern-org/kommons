@@ -8,27 +8,19 @@ import java.io.InputStream
 import javax.xml.parsers.DocumentBuilderFactory
 
 // document
-fun Document.forEach(tag: String = "*", action : (node: Node) -> Unit) {
+fun Document.forEach(tag: String = "*", action : (node: Node) -> Unit) =
     getElementsByTagName(tag).forEach(action)
-}
 
-fun Document.flatMap() : Unit = TODO()
 
 // node
-fun Node.forEach() : Unit = TODO()
-
-fun Node.flatMap()  : Unit = TODO()
-
-fun Node.filter() : Unit = TODO()
-
-fun NamedNodeMap.forEach(action: (node: Node) -> Unit) =
+inline fun NamedNodeMap.forEach(action: (node: Node) -> Unit) =
     (0 until this.length).forEach { action(item(it)) }
 
 // nodelist
-fun NodeList.forEach(action: (node: Node) -> Unit) =
+inline fun NodeList.forEach(action: (node: Node) -> Unit) =
     (0 until length).forEach { action(item(it)) }
 
-fun <T> NodeList.map(transform: (Node) -> T): List<T> {
+inline fun <T> NodeList.map(transform: (Node) -> T): List<T> {
     val destination = ArrayList<T>()
     (0 until length).forEach {
         destination.add(
@@ -38,7 +30,7 @@ fun <T> NodeList.map(transform: (Node) -> T): List<T> {
     return destination
 }
 
-fun NodeList.filter(predicate: (Node) -> Boolean): List<Node> {
+inline fun NodeList.filter(predicate: (Node) -> Boolean): List<Node> {
     val destination = ArrayList<Node>()
     (0 until length).forEach {
         val element = item(it)
