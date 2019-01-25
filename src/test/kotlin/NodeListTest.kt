@@ -8,7 +8,7 @@ import org.w3c.dom.Element
 import org.w3c.dom.Node
 import java.io.File
 
-private class NodeListTest {
+internal class NodeListTest {
 
     private val XML = "src/test/resources/file/xml/test.xml"
     private lateinit var document: Document
