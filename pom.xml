@@ -28,14 +28,14 @@
 
     <developers>
         <developer>
-            <id>andres</id>
-            <name>AndresAusechaMosquera</name>
-            <email>admin@systemkern.com</email>
-        </developer>
-        <developer>
             <id>rainer</id>
             <name>Rainer Kern</name>
             <email>rainer@systemkern.com</email>
+        </developer>
+        <developer>
+            <id>andres</id>
+            <name>AndresAusechaMosquera</name>
+            <email>admin@systemkern.com</email>
         </developer>
     </developers>
 
@@ -51,6 +51,7 @@
     </properties>
 
     <dependencies>
+        <!-- Kotlin -->
         <!-- kotlin -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -63,6 +64,17 @@
             <version>${kotlin.version}</version>
         </dependency>
 
+        <!-- Optional Dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <optional>true</optional>
+        </dependency>
         <!-- optional dependencies -->
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -128,12 +140,6 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>javax.persistence-api</artifactId>
-            <version>${javax-persistence-api.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
