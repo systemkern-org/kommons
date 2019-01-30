@@ -36,11 +36,12 @@ interface KtCrudRepository<T, ID : Serializable> : CrudRepository<T, ID> {
  * unwraps the optional returned by findById to either the entity or null
  * @see CrudRepository.findById
  */
+@Suppress("DEPRECATION")
 fun <T, ID : Serializable> KtCrudRepository<T, ID>.findById2(id: ID): T? =
-    systemkern.spring.KtCrudRepository.findById2(id).orElse(null)
+    findById(id).orElse(null)
 
 /**
- * @throws systemkern.persistence.NotFoundException if no entity can be found
+ * @throws javax.persistence.EntityNotFoundException if no entity can be found
  */
 @Throws(EntityNotFoundException::class)
 inline fun <reified T, ID : Serializable> KtCrudRepository<T, ID>.getById(id: ID): T =
