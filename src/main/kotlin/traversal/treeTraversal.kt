@@ -4,6 +4,7 @@ import com.systemkern.kommons.MutableTriple
 import com.systemkern.kommons.traversal.GcMode.IMMEDIATE
 import com.systemkern.kommons.traversal.GcMode.LEVEL
 import com.systemkern.kommons.traversal.GcMode.NONE
+import java.util.Stack
 
 inline fun <N> depthFirstSearch(
     root: N,
@@ -124,6 +125,26 @@ inline fun <reified N> iterativeDepthFirstSearch(
         it.third = it.third + 1
         //move to next level
         currentLevel++
+    }
+}
+
+inline fun <reified N> stackBasedDepthFirstSearch(
+    root: N,
+    getBranches: (N) -> Collection<N> = { listOf() },
+    action: (N) -> Unit = {}
+) {
+    val stack = Stack<N>()
+    stack.push(root)
+
+    // the level is also the index in the main array
+    while (stack.empty().not()) {
+        val node = stack.pop() ?: break
+
+        action(node)
+
+        getBranches(node).forEach {
+            stack.push(it)
+        }
     }
 }
 

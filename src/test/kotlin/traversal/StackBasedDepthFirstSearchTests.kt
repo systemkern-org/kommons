@@ -3,14 +3,14 @@ package com.systemkern.kommons.traversal
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-internal class RecursiveDepthFirstSearchTests {
+internal class StackBasedDepthFirstSearchTests {
 
     @Test fun `Can Navigate visit tree`() {
         val visited = mutableSetOf<TestTreeNode>()
-        depthFirstSearch(
+        stackBasedDepthFirstSearch(
             root = simpleTreeRoot,
             getBranches = { it.neighbours }
-        ) { it: TestTreeNode ->
+        ) {
             visited.add(it)
         }
 
@@ -22,7 +22,7 @@ internal class RecursiveDepthFirstSearchTests {
 
     @Test fun `Can Navigate eval tree`() {
         val visited = mutableSetOf<TestTreeNode>()
-        depthFirstSearch<TestTreeNode>(
+        stackBasedDepthFirstSearch(
             root = simpleTreeRoot,
             getBranches = { it.neighbours }
         ) {

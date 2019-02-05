@@ -54,23 +54,21 @@ internal class TraversalPerformanceTests {
                 println("---- Test Set $idx,branches $branches, depth: $depth, nodes: $expectedNodesStr ----")
                 for (triple in algorithmWithLimit) {
                     val (name, algorithm, limit) = triple
-                    if (expectedNodes > limit) {
-                        println("$name: nodes: $expectedNodesStr, limit: $limit -- SKIPPED")
+                    if (expectedNodes > limit)
                         continue
-                    }
 
-                    val duration = measureTimeMillis {
-                        val start = now()
-                        try {
+                    val start = now()
+                    try {
+                        val duration = measureTimeMillis {
                             val count = algorithm(branches, depth)
                             assertThat(count).isEqualTo(expectedNodes)
-                        } catch (t: Throwable) {
-                            println("$name: could not complete for $expectedNodesStr nodes: time to fail: ${between(start, now()).toMillis() / 1000}s -- ${t::class.simpleName}")
-                            //set new limit for this algorithm
-                            triple.third = expectedNodes
                         }
+                        println("$name: visited $expectedNodesStr nodes in ${duration / 1000}s")
+                    } catch (t: Throwable) {
+                        println("$name: could not complete for $expectedNodesStr nodes: time to fail: ${between(start, now()).toMillis() / 1000}s -- ${t::class.simpleName}")
+                        //set new limit for this algorithm
+                        triple.third = expectedNodes
                     }
-                    println("$name: visited $expectedNodesStr nodes in ${duration / 1000}s")
                 }
                 println("")
             }
