@@ -22,4 +22,26 @@ internal class TupleTests {
             assertThat(third).isEqualTo(true)
         }
     }
+
+    @Test fun `Can create and edit a mutable triple`() {
+        val triple = MutableTriple(1, "2", false)
+
+        triple.first = 42
+        triple.second = "33"
+        triple.third = true
+
+        assertThat(triple.first).isEqualTo(42)
+        assertThat(triple.second).isEqualTo("33")
+        assertThat(triple.third).isTrue()
+    }
+
+    @Test fun `Can convert MutableTriple to immutable Triple`() {
+        val triple = MutableTriple(1, "2", false)
+
+        with(triple.toTriple()) {
+            assertThat(first).isEqualTo(triple.first)
+            assertThat(second).isEqualTo(triple.second)
+            assertThat(third).isEqualTo(triple.third)
+        }
+    }
 }
