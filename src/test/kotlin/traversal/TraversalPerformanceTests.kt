@@ -1,12 +1,12 @@
 package com.systemkern.kommons.traversal
 
 import com.systemkern.kommons.MutableTriple
-import com.systemkern.kommons.d
-import com.systemkern.kommons.i
+import com.systemkern.kommons.calculateTreeSize
+import com.systemkern.kommons.l
+import com.systemkern.kommons.to
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import java.lang.Math.pow
 import java.text.NumberFormat
 import java.time.Duration.between
 import java.time.LocalTime.now
@@ -15,65 +15,70 @@ import kotlin.system.measureTimeMillis
 @Disabled
 internal class TraversalPerformanceTests {
 
-    private var algorithmWithLimit: List<MutableTriple<String, (branches: Int, treeDepth: Int) -> Int, Int>> =
+    private var algorithmWithLimit: List<MutableTriple<String, (branches: Int, treeDepth: Int) -> Int, Long>> =
         listOf(
             MutableTriple(
                 "Iterative Breadth-First 1",
                 iterativeBreadthFirstWithReferrences,
-                Int.MAX_VALUE
+                Long.MAX_VALUE
             ),
             MutableTriple(
                 "Iterative Breadth-First 2",
                 iterativeBreadthFirst,
-                Int.MAX_VALUE
+                Long.MAX_VALUE
             ),
             MutableTriple(
                 "Iterative Depth-First    ",
                 iterativeDepthFirst,
-                Int.MAX_VALUE
+                Long.MAX_VALUE
             ),
             MutableTriple(
                 "Recursive Depth-First    ",
                 recursiveDepthFirst,
-                Int.MAX_VALUE
+                Long.MAX_VALUE
             )
         )
 
     @Test fun `Run Performance Comparison`() {
         val minBranches = 2
-        val maxBranches = 2
-        val minimumDepth = 24
+        val maxBranches = 10
+        val minimumDepth = 2
         val maximumDepth = 30
 
         (minBranches..maxBranches)
-            .flatMap { br -> (minimumDepth..maximumDepth).map { br to it } }
-            .forEachIndexed { idx, (branches, depth) ->
-                val expectedNodes = (pow(branches.d, depth.d).i * 2 - 1)
-                val expectedNodesStr = NumberFormat.getIntegerInstance().format(expectedNodes)
+            .flatMap { branches ->
+                (minimumDepth..maximumDepth)
+                    .map { depth -> branches to depth to calculateTreeSize(branches = branches, treeDepth = depth) }
+            }
+            .filter { it.third > 0 } // some values actually roll over to negative
+            .sortedBy { it.third }
+            .forEachIndexed { idx, (branches, depth, expected) ->
 
-                println("---- Test Set $idx,branches $branches, depth: $depth, nodes: $expectedNodesStr ----")
+                println("---- Test Set $idx, branches $branches, depth: $depth, nodes: ${expected.str} ----")
                 for (triple in algorithmWithLimit) {
                     val (name, algorithm, limit) = triple
-                    if (expectedNodes > limit)
+                    if (expected > limit)
                         continue
 
                     val start = now()
                     try {
                         val duration = measureTimeMillis {
                             val count = algorithm(branches, depth)
-                            assertThat(count).isEqualTo(expectedNodes)
+                            assertThat(count).isEqualTo(expected)
                         }
-                        println("$name: visited $expectedNodesStr nodes in ${duration / 1000}s")
+                        println("$name: visited ${expected.str} nodes in ${duration / 1000}s")
                     } catch (t: Throwable) {
-                        println("$name: could not complete for $expectedNodesStr nodes: time to fail: ${between(start, now()).toMillis() / 1000}s -- ${t::class.simpleName}")
+                        println("$name: could not complete for ${expected.str} nodes: time to fail: ${between(start, now()).toMillis() / 1000}s -- ${t::class.simpleName}")
                         //set new limit for this algorithm
-                        triple.third = expectedNodes
+                        triple.third = expected.l
                     }
                 }
                 println("")
             }
     }
 }
+
+private val Number.str: String get() = NumberFormat.getInstance().format(this)
 
 private val iterativeBreadthFirstWithReferrences: (branches: Int, treeDepth: Int) -> Int = { branches, treeDepth ->
     iterativeBreadthFirstSearch(
