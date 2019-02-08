@@ -9,7 +9,8 @@ import kotlin.reflect.full.declaredMemberProperties
 import kotlin.reflect.jvm.javaField
 
 /**
- * The InMemoryRepository is intended mainly for testing purposes.
+ * The InMemoryRepository is a basic for the base `org.springframework.data.repository.CrudRepository`.
+ * It is intended mainly for testing purposes.
  * It emulates the basic CRUD functionality of a SpringData Repository but completely in memory.
  * Also findById(), getById() and delteById() work as expected
  */

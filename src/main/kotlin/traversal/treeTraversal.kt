@@ -32,6 +32,27 @@ fun <N, R> depthFirstSearch(
     .let { eval(root, it) }
 
 
+inline fun <reified N> stackBasedDepthFirstSearch(
+    root: N,
+    getBranches: (N) -> Collection<N> = { listOf() },
+    action: (N) -> Unit = {}
+) {
+    val stack = Stack<N>()
+    stack.push(root)
+
+    // the level is also the index in the main array
+    while (stack.empty().not()) {
+        val node = stack.pop() ?: break
+
+        action(node)
+
+        getBranches(node).forEach {
+            stack.push(it)
+        }
+    }
+}
+
+
 inline fun <reified N : Any> iterativeBreadthFirstSearch(
     gcMode: GcMode = IMMEDIATE,
     root: N,
@@ -74,6 +95,11 @@ inline fun <reified N : Any> iterativeBreadthFirstSearch(
 
     return ar
 }
+
+enum class GcMode {
+    NONE, IMMEDIATE, LEVEL
+}
+
 
 inline fun <reified N> iterativeDepthFirstSearch(
     root: N,
@@ -126,28 +152,4 @@ inline fun <reified N> iterativeDepthFirstSearch(
         //move to next level
         currentLevel++
     }
-}
-
-inline fun <reified N> stackBasedDepthFirstSearch(
-    root: N,
-    getBranches: (N) -> Collection<N> = { listOf() },
-    action: (N) -> Unit = {}
-) {
-    val stack = Stack<N>()
-    stack.push(root)
-
-    // the level is also the index in the main array
-    while (stack.empty().not()) {
-        val node = stack.pop() ?: break
-
-        action(node)
-
-        getBranches(node).forEach {
-            stack.push(it)
-        }
-    }
-}
-
-enum class GcMode {
-    NONE, IMMEDIATE, LEVEL
 }
