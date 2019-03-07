@@ -22,7 +22,7 @@ const val basepackage = "com.systemkern.kommons.jpa"
 @ContextConfiguration(classes = [KtCrudRepositoryTests::class])
 @EnableJpaRepositories(basePackages = [basepackage])
 @EntityScan(basePackages = [basepackage])
-private open class KtCrudRepositoryTests {
+private class KtCrudRepositoryTests {
 
     @Autowired
     private lateinit var repo: TestKtCrudRepo
