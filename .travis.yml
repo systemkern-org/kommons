@@ -1,45 +1,14 @@
-language: kotlin
-env:
-  global:
-    - secure: "BxqgS1ZyQ8CugBmp1zDIbFNLFkX7EHK9OjRKlrndTYQuRR1kd1QNpOGEDGZO+Sp+xUBIm9CQBBzjUkil3E5SsHek32WCdKzhKKUTEbGywngfk
-              3zP0i3xINeKwlwyv8iJXijZuBvgSBp/mqvAMyP03/TTBKrdhFehxGaKvZ+EUwAVU01vsCaZqTd97yj6C4OwLiUX9gZpJtxPfNVQYgo+m7tvp4UqPPFTZf6d2
-              Lu/lIM+Xa0hiXk6enHlb843WWfjK6BX1uzKH8V68avt3VPQ0f8y9AC44VfK/biGwbFKJSfhglt4YF51nZzM0CxvKTgyxPdy3NG3mCu8jGijirxeIJdWtReGp
-              MWcjYgAy5NPtHA5kQ5+0ygMjojRal+kS1xeMeVH/xL89Lzkudj2jA/iLrpFflsBaSs69JY5ZR4WDkHhYNVFZDN/9PjbVf/uGb4BUzNinDEnGm3TeH+8vPCQM
-              G4wranxxg6kv/L95Ol4nJcXuSh6i1dFgzk1jDI7dLKhgxuv2Lr87bPhACtxtT3a7YGN2pv6Bvq/ljTX2w51MX1qyv8Ai1yw8jaknQaKGEJ9SSfIQR0rj4DTq
-              abvOwXcK/2Q2C+CfOqyhI1E+B6nSRyq2FCskd90t0aVOaX2dRdN6fRC/EY4pwbXrN8rj3MJLYJV/cP658CxGygi6pGEc2c="
-    - # ^^ OSSRH_JIRA_USERNAME
-    - secure: "o/U9NiG+0Z7UawyC8sajYdYdl+6EUY5x7du2lAwnVdHWfF7jEd1p190FXQnJs/ClOx9G9stIOOlSMSHzUjFalHcamUj0AE1n8PW9H2kmtS8k0
-              aHxdRlRpuzH0XRbxHqtMk6qVYiwDfEf4tMRtKjQk/DCFZXfU640QXnt3RqjZEJdJTuozYqbrsvo0xN0EagEAftjm4rUm0qYfYgLUq/+rauaFgLBuJzWvVMc/
-              gyG7tt3rQ4libkb/i2ZeGqf2Nmi7lxRLAXSOMV0HX04WMjpik0LckMPMO20EBfmQcaYvsx7dvnKbmesjd8mN9CLMWz85rhFFp3VMPcjWg4JjrHQEssP8AzTL
-              OIc+YBKf3pfs++LhVPMWQE3oT4BMjSmrt8mFu2ZwMX64H8lTBadchl8O3okU/6x61BZ8//TlhiYTUw6G1qjFAaaQBhF6NmdVt7Ioo4mgXeOfOgVQnHRhGQhC
-              cMHIsxw1ZsEC7rmNJMnPpY/axrf8jWuY5SCeyRIJ3XSlGgK2QlvNpERJfnW58g31vk4yFClbDzW/DYrPvrzz9KIKC7XqOZ+pOjnlPK5SzcecjArot1iJLFIB
-              95SsWgUKp80I/hcuu6xehsw+HYBz0cxLmGGjJHf9W8YUAgoSwcSChwMgBhccjl0qMrFeLA+ZIsT1YJMa+UnZ6hHN2BnshU="
-    - # ^^ OSSRH_JIRA_PASSWORD
-    - secure: "e1k2vZw6cCmmzzoYLW2Y2anXUnWCKjH7O6GxOidykUfRLL2khGRsmlwDrbXE4QeswCSQNVbu49dTe1wPblxRHW0u+HvRWTftblokrAaoiAlA5
-              4c3IbgXQQHsPfi+DHka8XTt+K/I2Az4Xsb6uz2HkMRUke+e3MYuqqOVEQU3Yr1iQ5sYxMsn55fNwBoUthczWmfPu5n9o20+VWBdXNBNoW/7faJMUyjrq0Wf9
-              0zSDH4uR5buzNG4j9d7Ews0xY0jxPFVp26oJRSu7o/aLU5l/xkAZro8MHoK6T/5aH1yNaCG2TgsbpvdXQ8sNjYBTsUZbxSDBN47wlzKM5ahWki7qKMt5bbn7
-              Eq21JGqi+ZdWM6Nu3eahpDov5cM0MobfdYysgw8jMqC9/tXStoQDBhDcc/1xrkQTsdrVYLCsSZJKjfaY/pvq6gsoC0QASFKY3XsE3CH7FzxYrEUIeOvwfVS/
-              brSvsjwZ1jJ/jAekWwgEtvii/yus9nDSVShgYr4jqhGLM5MxlZa9AaJmCmO5T+6r6cp7ssPw5bua2Hq9BNCKlolhd5p+jMheLzrBcbZrSRoDT2eoOYHqr5ZZ
-              IIuu7n1B1C7N96CrCQHl4vO932hfwkh7Rn/Xsbc4HHQiaypqxOJSXv3+z5kpHOPbM5znGGeu+0cHpOIWJgowb9IYk8Nie4="
-    - # ^^ GPG_KEY_NAME
-    - secure: "poFncm2x6Ez24Mfg1Q7yubz/ZU24BJycNIReyIwSqqUra91JtopfFk5Yk5ucpPqW3LfFOrjfGNn4jIh2EWvPuSx6+fBhOES0NPaH3b+g1YF0S
-              KM9XBV64thzCL+ySIC3rkztXg4+y7a3/xGUPYmXMWHKiusRoPxRYfRu4/Riku4XMnaPDpfpAVeBb07XJgqs2SKB95InCJXs9tS+ybB6I+W7GEhLZHSec5bfe
-              DSSoRpNaECC3KMWeMD2SBoLGD+sEVEj9qXRF5m0OMuRYvdYgnK3G4zeOx8uCqR++W1duMGTd0lSVp/2pQZM3zbgecW2j0h9prWlnApA1MP6vcue0lvjO1+b9
-              e4LEHwWe+qg88+Lx7Jno+BeRJHnoKsZLcsP/m2OfXz/qk0YO8oAHvvbG9Io8xN2mmbwu8FWlbju28DyTArMo5UO3dj4et+cFRhTC1GXQbDzYHHzP0eAqsf2n
-              xEL2nJr98SlluH6gr8pJ2DB99pzend2Bqosl+3umdx4wBPxeP0dwh3yNGLlEF5BAIGC9uyBH6tvP4U12mYEOUYuRtZb0KQi7M2kl3Bi2t5jcoulfA1fwFZ2G
-              sinxtSiSLPYN8WHInSpjvCOnBA+PjjrIGxhYvbzFGqa9j8dVAL1HVnnuF1VVcC1Sl7JSfIupJrqP6Un7Zh2nWJezS+z2Lo="
-    - # ^^ GPG_PASSPHRASE
-
+language: java
 before_install:
-  - chmod +x deployment/before-deploy.sh
-  - chmod +x deployment/deploy.sh
-install: mvn install --activate-profiles !build-extras -DskipTests=false -Dmaven.javadoc.skip=true --batch-mode --show-version
-script: mvn test --activate-profiles !build-extras --batch-mode
+  - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
+  - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
+
+install: mvn install --settings .maven.xml -DskipTests=false -Dmaven.javadoc.skip=true -Dgpg.skip --batch-mode --show-version
 
 cache:
   directories:
     - ~/.m2/repository
 
-after_success:
-  - ./deployment/before-deploy.sh
-  - ./deployment/deploy.sh
+deploy:
+  - provider: script
+    script: mvn --settings .maven.xml clean deploy -P release
