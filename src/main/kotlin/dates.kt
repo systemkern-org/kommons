@@ -2,39 +2,41 @@ package com.systemkern.kommons
 
 import java.time.LocalDate
 import java.time.LocalDateTime
-import java.time.LocalTime
 import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeParseException
+import java.time.format.DateTimeFormatter.ISO_LOCAL_DATE
+import java.time.format.DateTimeFormatter.ISO_LOCAL_DATE_TIME
 
 /** @return the ISO 8601 yyyy-mm-dd string representation of this date */
-fun LocalDate.format(format: String = "") : String {
-    val dateFormatter = if (format.isEmpty()) DateTimeFormatter.ISO_LOCAL_DATE else DateTimeFormatter.ofPattern(format)
-    return this.format(dateFormatter)
-}
+fun LocalDate.format(format: String = ""): String =
+    (if (format.isEmpty()) ISO_LOCAL_DATE else DateTimeFormatter.ofPattern(format))
+        .let { this.format(it) }
 
 /** @return the ISO 8601 yyyy-mm-dd string representation of this date */
-fun LocalDateTime.format(format: String = ""): String {
-    val dateFormatter = if (format.isEmpty()) DateTimeFormatter.ISO_LOCAL_DATE_TIME else DateTimeFormatter.ofPattern(format)
-    return this.format(dateFormatter)
-}
+fun LocalDateTime.format(format: String = ""): String =
+    (if (format.isEmpty()) ISO_LOCAL_DATE_TIME else DateTimeFormatter.ofPattern(format))
+        .let { this.format(it) }
 
-fun String.toLocalDate(format: String = ""): LocalDate? =
+fun String.toLocalDate(format: String = ""): LocalDate =
+    (if (format.isEmpty()) ISO_LOCAL_DATE else DateTimeFormatter.ofPattern(format))
+        .let { LocalDate.parse(this, it) }
+
+/**
+ * Convert the given string to a LocalDateTimeObject.
+ * Accepts both dd-MM-yyyy and DateTimeFormatter.ISO_LOCAL_DATE_TIME string formats
+ * @throws Exception if "parse" throws an exception
+ */
+fun String.toLocalDateTime(format: String = ""): LocalDateTime =
     try {
-        val dateFormatter = if (format.isEmpty()) DateTimeFormatter.ISO_LOCAL_DATE else DateTimeFormatter.ofPattern(format)
-        LocalDate.parse(this, dateFormatter)
+        (if (format.isEmpty()) ISO_LOCAL_DATE_TIME else DateTimeFormatter.ofPattern(format))
+            .let { LocalDateTime.parse(this, it) }
     } catch (e: Exception) {
-        null
+        if (format.isNotEmpty() && format.length != 10 /* ISO_LOCAL_DATE lenght*/)
+            throw e
+        // Fallback to LocalDate parsing
+        try {
+            this.toLocalDate(format).atStartOfDay()
+        } catch (e2: Exception) {
+            e.addSuppressed(e2)
+            throw e
+        }
     }
-
-fun String.toLocalDateTime(format: String = ""): LocalDateTime? {
-    return try {
-        val dateTimeFormatter = if (format.isEmpty()) DateTimeFormatter.ISO_LOCAL_DATE_TIME else DateTimeFormatter.ofPattern(format)
-        // first try to format as datetime
-        LocalDateTime.parse(this, dateTimeFormatter)
-    } catch (e: Exception) {
-        // if not try to format as date and convert to datetime on (0,0,0)
-        val date = this.toLocalDate(format) ?: return null
-        LocalDateTime.of(date, LocalTime.of(0,0,0))
-    }
-}
-

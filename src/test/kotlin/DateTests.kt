@@ -2,6 +2,7 @@ package com.systemkern.kommons
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import java.time.LocalDate
 import java.time.LocalDateTime
 
@@ -23,11 +24,15 @@ private class DateTests {
         assertThat("2000-02-29".toLocalDate()).isEqualTo(LocalDate.of(2000, 2, 29))
         // custom format
         assertThat("29/02/2000".toLocalDate("dd/MM/yyyy")).isEqualTo(LocalDate.of(2000, 2, 29))
-        // invalid format string
-        assertThat("29/02/2000".toLocalDate("dd/MM/yyyy P")).isNull()
+    }
+
+    @Test fun `String to LocalDate throws exception for invalid inputs`() {
+        // not a date
+        assertThrows<Exception> { "test".toLocalDate() }
         // invalid date
-        assertThat("test".toLocalDate()).isNull()
-        assertThat("2000-02-30".toLocalDate()).isNull()
+        assertThrows<Exception> { "2000-02-31".toLocalDate() }
+        // invalid format string
+        assertThrows<Exception> { "29-02-2000".toLocalDate("dd-MM-yyyy P") }
     }
 
     @Test fun `Can convert ISO String to LocalDateTime`() {
@@ -43,14 +48,21 @@ private class DateTests {
         // custom format
         assertThat("29-02-2000T11:12:13".toLocalDateTime("dd-MM-yyyy'T'HH:mm:ss")).isEqualTo(LocalDateTime.of(2000, 2, 29, 11, 12, 13))
         assertThat("29-02-2000T11:12:13.1234".toLocalDateTime("dd-MM-yyyy'T'HH:mm:ss.n")).isEqualTo(LocalDateTime.of(2000, 2, 29, 11, 12, 13, 1234))
-
-        // date format
-        assertThat("2000-02-29".toLocalDateTime()).isEqualTo(LocalDateTime.of(2000, 2, 29, 0,0,0))
-        assertThat("29-02-2000".toLocalDateTime("dd-MM-yyyy")).isEqualTo(LocalDateTime.of(2000, 2, 29, 0,0,0))
-        // invalid format string
-        assertThat("29-02-2000".toLocalDateTime("dd-MM-yyyy P")).isNull()
-        // invalid date string
-        assertThat("2000-02-31".toLocalDateTime()).isNull()
-        assertThat("test".toLocalDateTime()).isNull()
     }
+
+    @Test fun `Can convert ISO LocalDate String to LocalDateTime`() {
+        assertThat("2000-02-29".toLocalDateTime()).isEqualTo(LocalDateTime.of(2000, 2, 29, 0, 0, 0))
+        assertThat("29-02-2000".toLocalDateTime("dd-MM-yyyy")).isEqualTo(LocalDateTime.of(2000, 2, 29, 0, 0, 0))
+    }
+
+
+    @Test fun `String to LocalDateTime throws exception for invalid inputs`() {
+        // not a date
+        assertThrows<Exception> { "test".toLocalDateTime() }
+        // invalid date
+        assertThrows<Exception> { "2000-02-31".toLocalDateTime() }
+        // invalid format string
+        assertThrows<Exception> { "29-02-2000".toLocalDateTime("dd-MM-yyyy P") }
+    }
+
 }
