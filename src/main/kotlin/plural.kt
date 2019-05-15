@@ -7,6 +7,7 @@ package com.systemkern.kommons
  */
 val String.plural: String
     get() = when {
+        pluralVersions.contains(this.toLowerCase()) -> this
         irregularNouns.containsKey(this.toLowerCase()) -> irregularNouns[this.toLowerCase()]!!
         "y" == this.takeLast(1).toLowerCase() -> this.dropLast(1) + "ies"
         setOf("s", "x", "z", "ch", "sh").contains(this.takeLast(1).toLowerCase()) -> this + "es"
@@ -60,3 +61,5 @@ private val irregularNouns = mapOf(
     "species" to "species",
     "trousers" to "trousers"
 )
+
+private val pluralVersions = irregularNouns.values.toSet()

@@ -6,7 +6,7 @@
 
     <groupId>com.systemkern</groupId>
     <artifactId>kommons</artifactId>
-    <version>0.5-SNAPSHOT</version>
+    <version>0.5</version>
     <packaging>jar</packaging>
 
     <name>kommons</name>
@@ -50,7 +50,7 @@
         <junit.version>5.3.2</junit.version>
         <springboot.version>2.1.4.RELEASE</springboot.version>
         <springdata.version>2.1.8.RELEASE</springdata.version>
-        <h2database.version>2.1.4.RELEASE</h2database.version>
+        <h2database.version>1.4.199</h2database.version>
         <javax-persitence-api.version>2.2</javax-persitence-api.version>
     </properties>
 
@@ -91,7 +91,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.199</version>
+            <version>${h2database.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>

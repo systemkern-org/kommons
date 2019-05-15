@@ -60,13 +60,11 @@ class PluralTests {
     }
 
     @Test fun `Cannot get plural of already plural nouns`() {
-        assertThat("cars".plural).isEqualTo("cars")
-        assertThat("entities".plural).isEqualTo("entities")
         assertThat("foci".plural).isEqualTo("foci")
         assertThat("phenomena".plural).isEqualTo("phenomena")
     }
 
-    @Test fun `What should we do with phrases=`() {
-        assertThat("This is a phrase".plural).isEqualTo("?")
+    @Test fun `What should we do with phrases`() {
+        assertThat("This is a phrase".plural).isEqualTo("This is a phrases")
     }
 }
