@@ -1,5 +1,7 @@
 package com.systemkern.kommons.jpa
 
+import com.systemkern.kommons.experimental.jpa.InMemoryRepository
+import com.systemkern.kommons.experimental.jpa.getId
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.util.UUID
@@ -7,7 +9,7 @@ import javax.persistence.Id
 
 class InMemoryRepositoryTests {
 
-    @Test fun `can get Entity ID`() {
+    @Test fun `Can get Entity ID`() {
         InMemoryEntity().getId<InMemoryEntity, UUID>(InMemoryEntity::class)
     }
 

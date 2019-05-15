@@ -8,7 +8,11 @@ import kotlin.reflect.KProperty1
 import kotlin.reflect.full.declaredMemberProperties
 import kotlin.reflect.jvm.javaField
 
-
+/**
+ * The InMemoryRepository is intended mainly for testing purposes.
+ * It emulates the basic CRUD functionality of a SpringData Repository but completely in memory.
+ * Also findById(), getById() and delteById() work as expected
+ */
 class InMemoryRepository<T : Any, ID : Serializable>(
     private val entityClass: KClass<T>,
     private val population: MutableMap<ID, T> = mutableMapOf()
