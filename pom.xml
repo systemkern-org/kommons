@@ -28,14 +28,14 @@
 
     <developers>
         <developer>
-            <id>andres</id>
-            <name>AndresAusechaMosquera</name>
-            <email>admin@systemkern.com</email>
-        </developer>
-        <developer>
             <id>rainer</id>
             <name>Rainer Kern</name>
             <email>rainer@systemkern.com</email>
+        </developer>
+        <developer>
+            <id>andres</id>
+            <name>AndresAusechaMosquera</name>
+            <email>admin@systemkern.com</email>
         </developer>
     </developers>
 
@@ -48,9 +48,14 @@
         <assertj.version>3.9.1</assertj.version>
         <javax-persistence-api.version>2.2</javax-persistence-api.version>
         <junit.version>5.3.2</junit.version>
+        <springboot.version>2.1.4.RELEASE</springboot.version>
+        <springdata.version>2.1.8.RELEASE</springdata.version>
+        <h2database.version>2.1.4.RELEASE</h2database.version>
+        <javax-persitence-api.version>2.2</javax-persitence-api.version>
     </properties>
 
     <dependencies>
+        <!-- Kotlin -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
@@ -62,8 +67,57 @@
             <version>${kotlin.version}</version>
         </dependency>
 
+        <!-- Optional Dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${springboot.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>${javax-persitence-api.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+            <version>${springdata.version}</version>
+            <optional>true</optional>
+        </dependency>
 
         <!-- testing dependencies -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.199</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${springboot.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hamcrest</groupId>
+                    <artifactId>hamcrest-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.hamcrest</groupId>
+                    <artifactId>hamcrest-library</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.skyscreamer</groupId>
+                    <artifactId>jsonassert</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-test-junit</artifactId>
@@ -88,15 +142,10 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>javax.persistence-api</artifactId>
-            <version>${javax-persistence-api.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
+        <defaultGoal>clean verify</defaultGoal>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
         <testSourceDirectory>src/test/kotlin</testSourceDirectory>
         <plugins>
@@ -105,6 +154,10 @@
                 <version>${kotlin.version}</version>
                 <configuration>
                     <jvmTarget>${java.version}</jvmTarget>
+                    <compilerPlugins>
+                        <plugin>jpa</plugin>
+                        <plugin>spring</plugin>
+                    </compilerPlugins>
                 </configuration>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <executions>
@@ -137,6 +190,11 @@
                     <dependency>
                         <groupId>org.jetbrains.kotlin</groupId>
                         <artifactId>kotlin-maven-allopen</artifactId>
+                        <version>${kotlin.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-maven-noarg</artifactId>
                         <version>${kotlin.version}</version>
                     </dependency>
                 </dependencies>
