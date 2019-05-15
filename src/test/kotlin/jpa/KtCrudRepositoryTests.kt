@@ -44,10 +44,10 @@ private class KtCrudRepositoryTests {
 }
 
 @Repository
-private interface TestKtCrudRepo : KtCrudRepository<TestEntity, UUID>
+internal interface TestKtCrudRepo : KtCrudRepository<TestEntity, UUID>
 
 @Entity
-private data class TestEntity(
+internal data class TestEntity(
     @Id val id: UUID = randomUUID(),
     val content: String = "foo"
 )

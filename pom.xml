@@ -48,11 +48,14 @@
         <assertj.version>3.9.1</assertj.version>
         <javax-persistence-api.version>2.2</javax-persistence-api.version>
         <junit.version>5.3.2</junit.version>
+        <springboot.version>2.1.4.RELEASE</springboot.version>
+        <springdata.version>2.1.8.RELEASE</springdata.version>
+        <h2database.version>2.1.4.RELEASE</h2database.version>
+        <javax-persitence-api.version>2.2</javax-persitence-api.version>
     </properties>
 
     <dependencies>
         <!-- Kotlin -->
-        <!-- kotlin -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
@@ -68,17 +71,19 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${springboot.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
+            <version>${javax-persitence-api.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- optional dependencies -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>
+            <version>${springdata.version}</version>
             <optional>true</optional>
         </dependency>
 
@@ -86,17 +91,13 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+            <version>1.4.199</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!--
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <version>${springboot.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -117,7 +118,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-test-junit</artifactId>
