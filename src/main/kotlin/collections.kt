@@ -25,8 +25,8 @@ inline fun <reified T> union(l1: List<T>, l2: List<T>, l3: List<T>, l4: List<T>,
 inline fun <reified T> union(l1: List<T>, l2: List<T>, l3: List<T>, l4: List<T>, l5: List<T>, vararg elements: T): List<T> =
     flatten(l1, l2, l3, l4, l5, elements.toList())
 
-inline fun <T, R> Iterable<T>.mapToSet(transform: (T) -> R) =
-    this.map(transform).toSet()
+inline fun <T, R> Iterable<T>.mapToSet(transform: (T) -> R): Set<R> =
+    this.mapTo(mutableSetOf(), transform).toSet()
 
-inline fun <T, R : Any> Iterable<T>.mapNotNullToSet(transform: (T) -> R?) =
-    this.mapNotNull(transform).toSet()
+inline fun <T, R : Any> Iterable<T>.mapNotNullToSet(transform: (T) -> R?): Set<R> =
+    this.mapNotNullTo(mutableSetOf(), transform).toSet()
