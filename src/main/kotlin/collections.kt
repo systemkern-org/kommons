@@ -5,10 +5,10 @@ package com.systemkern.kommons
  * The returned list is serializable (JVM).
  */
 fun <T> flatten(vararg elements: List<T>): List<T> =
-    elements.flatMap { it }
+    elements.toList().flatten()
 
 fun <T> flatten(list: List<List<T>>): List<T> =
-    list.flatMap { it }
+    list.flatten()
 
 inline fun <reified T> union(l: List<T>, vararg elements: T): List<T> =
     flatten(l, elements.toList())
