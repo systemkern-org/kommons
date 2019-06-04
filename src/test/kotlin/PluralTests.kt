@@ -3,7 +3,7 @@ package com.systemkern.kommons
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class PluralTests {
+internal class PluralTest {
 
     @Test fun `Can get plural of regular nouns`() {
         assertThat("entity".plural).isEqualTo("entities")

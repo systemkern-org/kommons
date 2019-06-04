@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import kotlin.reflect.full.starProjectedType
 
-internal class KTypeSimpleNameTests {
+internal class KTypeSimpleNameTest {
 
     @Test fun `Can determine lower case enums first value`() {
         val ret = GenericFoo::class.starProjectedType.simpleName

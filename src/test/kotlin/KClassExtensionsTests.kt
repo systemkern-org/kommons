@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.util.*
 
-internal class KClassExtensionsTests {
+internal class KClassExtensionsTest {
 
     @Test fun `Can get class properties`() {
         val ret = MyDataClass::class.entityProperties

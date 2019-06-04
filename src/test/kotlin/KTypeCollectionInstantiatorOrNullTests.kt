@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import kotlin.reflect.full.starProjectedType
 
-internal class KTypeCollectionInstantiatorOrNullTests {
+internal class KTypeCollectionInstantiatorOrNullTest {
 
     @Test fun `Can create collection instantiator for Kotlin Enumeration`() {
         val ret = java.util.Enumeration::class.starProjectedType.collectionInstantiatorOrNull

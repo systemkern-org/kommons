@@ -6,7 +6,7 @@ import org.junit.jupiter.api.assertThrows
 import java.time.LocalDate
 import java.time.LocalDateTime
 
-private class DateTests {
+internal class DateTest {
 
     @Test fun `Can get LocalDate to ISO String`() {
         assertThat(LocalDate.of(2000, 2, 29).format()).isEqualTo("2000-02-29")
