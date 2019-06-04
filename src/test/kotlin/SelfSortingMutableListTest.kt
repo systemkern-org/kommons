@@ -35,4 +35,19 @@ internal class SelfSortingMutableListTest {
         assertThat(ssmList[4]).isEqualTo(4)
     }
 
+    @Test fun addEqualElementsRepeated(){
+        val ssmList = SelfSortingMutableList<Int>()
+        ssmList.add(8)
+        ssmList.add(2)
+        ssmList.add(1)
+        ssmList.add(4)
+        ssmList.add(1)
+
+        assertThat(ssmList[0]).isEqualTo(1)
+        assertThat(ssmList[1]).isEqualTo(1)
+        assertThat(ssmList[2]).isEqualTo(2)
+        assertThat(ssmList[3]).isEqualTo(4)
+        assertThat(ssmList[4]).isEqualTo(8)
+    }
+
 }
