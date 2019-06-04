@@ -6,9 +6,10 @@ import java.math.BigDecimal
 import java.math.MathContext
 import java.math.RoundingMode.HALF_EVEN
 
-internal class PrimitiveExtensionTests {
+internal class PrimitiveExtensionTest {
 
-    @Test fun `Can execute ifTrue-lambda only if boolean is true`() {
+    @Test
+    fun `Can execute ifTrue-lambda only if boolean is true`() {
         var executed = false
         true.ifTrue { executed = true }
         assertThat(executed).isTrue()

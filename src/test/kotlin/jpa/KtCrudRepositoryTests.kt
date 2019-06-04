@@ -19,10 +19,10 @@ import javax.persistence.Id
 const val basepackage = "com.systemkern.kommons.jpa"
 
 @DataJpaTest(showSql = false)
-@ContextConfiguration(classes = [KtCrudRepositoryTests::class])
+@ContextConfiguration(classes = [KtCrudRepositoryTest::class])
 @EnableJpaRepositories(basePackages = [basepackage])
 @EntityScan(basePackages = [basepackage])
-private class KtCrudRepositoryTests {
+internal class KtCrudRepositoryTest {
 
     @Autowired
     private lateinit var repo: TestKtCrudRepo
