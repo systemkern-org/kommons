@@ -3,6 +3,7 @@ package com.systemkern.kommons
 import org.w3c.dom.Document
 import org.w3c.dom.NamedNodeMap
 import org.w3c.dom.Node
+import org.w3c.dom.Node.ELEMENT_NODE
 import org.w3c.dom.NodeList
 import java.io.InputStream
 import javax.xml.parsers.DocumentBuilderFactory
@@ -51,3 +52,13 @@ fun readDocument(stream: InputStream): Document =
         .parse(stream)
         .apply { documentElement.normalize() }
         ?: throw RuntimeException("Could not Parse XML Document from Stream")
+
+fun Node.recursiveTraverse(attributeAction: (Node) -> Unit = {}, nodeAction: (Node) -> Unit = {}) {
+    nodeAction(this)
+    attributes?.forEach { attributeAction(it) }
+    childNodes
+        .filter { it.nodeType == ELEMENT_NODE }
+        .forEach {
+            it.recursiveTraverse(attributeAction, nodeAction)
+        }
+}
