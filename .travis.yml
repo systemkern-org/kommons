@@ -3,7 +3,7 @@ before_install:
   - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
   - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
 
-install: mvn install -DskipTests=false --batch-mode --show-version
+install: gradle build
 
 cache:
   directories:
