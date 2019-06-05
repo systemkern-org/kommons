@@ -19,11 +19,11 @@ const val basepackage = "com.systemkern.kommons"
 
 @ExtendWith(SpringExtension::class)
 @DataJpaTest(showSql = false)
-@ContextConfiguration(classes = [KtCrudRepositoryTests::class])
+@ContextConfiguration(classes = [KtCrudRepositoryTest::class])
 @ComponentScan(basePackages = [basepackage])
 @EnableJpaRepositories(basePackages = [basepackage])
 @EntityScan(basePackages = [basepackage])
-internal class KtCrudRepositoryTests {
+internal class KtCrudRepositoryTest {
 
     @Autowired
     lateinit var repo: KtCrudDataTestRepository

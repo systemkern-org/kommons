@@ -3,7 +3,7 @@ package com.systemkern.kommons
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-internal class CollectionExtensionTests {
+internal class CollectionExtensionTest {
 
     @Test fun `Can flatten lists`() {
         val a = listOf(1, 2, 3)

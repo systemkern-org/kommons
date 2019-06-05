@@ -6,7 +6,7 @@
 
     <groupId>com.systemkern</groupId>
     <artifactId>kommons</artifactId>
-    <version>0.5</version>
+    <version>0.6-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>kommons</name>
@@ -34,8 +34,8 @@
         </developer>
         <developer>
             <id>andres</id>
-            <name>AndresAusechaMosquera</name>
-            <email>admin@systemkern.com</email>
+            <name>Andres Ausecha Mosquera</name>
+            <email>andres@systemkern.com</email>
         </developer>
     </developers>
 
@@ -52,6 +52,9 @@
         <springdata.version>2.1.8.RELEASE</springdata.version>
         <h2database.version>1.4.199</h2database.version>
         <javax-persitence-api.version>2.2</javax-persitence-api.version>
+
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <junit-platform-surefire-provider.version>1.1.1</junit-platform-surefire-provider.version>
     </properties>
 
     <dependencies>
@@ -198,6 +201,24 @@
                         <version>${kotlin.version}</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>${junit-platform-surefire-provider.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.junit.jupiter</groupId>
+                        <artifactId>junit-jupiter-engine</artifactId>
+                        <version>${junit.version}</version>
+                    </dependency>
+                </dependencies>
+
             </plugin>
         </plugins>
     </build>
