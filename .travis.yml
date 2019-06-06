@@ -13,6 +13,6 @@ cache:
 
 deploy:
   - provider: script
-    script: mvn --settings .maven.xml clean deploy -P release
+    script: ./gradlew uploadArchives
     on:
       tags: true
