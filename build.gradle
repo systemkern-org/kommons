@@ -8,7 +8,8 @@ plugins {
     id 'org.springframework.boot' version '2.1.4.RELEASE'
     id 'org.jetbrains.kotlin.jvm' version '1.3.30'
     id 'org.jetbrains.kotlin.plugin.spring' version '1.3.30'
-    id 'maven-publish'
+    id 'signing'
+    id 'maven'
 }
 
 apply plugin: "kotlin-jpa"
@@ -19,10 +20,7 @@ description = 'kommons'
 sourceCompatibility = '1.8'
 
 repositories {
-    mavenLocal()
-    maven {
-        url = 'http://repo.maven.apache.org/maven2'
-    }
+    mavenCentral()
 }
 
 dependencies {
@@ -49,10 +47,60 @@ test {
     useJUnitPlatform()
 }
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            from(components.java)
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+
+            // Sign POM
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            // Destination
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            // Add required metadata to POM
+            pom.project {
+                name 'kommons'
+                packaging 'jar'
+                description 'Commonly used extensions in Kotlin'
+                url 'https://github.com/systemkern/kommons/'
+
+                scm {
+                    connection 'https://github.com/systemkern/kommons.git'
+                    developerConnection 'https://github.com/systemkern/kommons'
+                    url 'https://systemkern.github.io/kommons/'
+                }
+
+                licenses {
+                    license {
+                        name 'Unlicense'
+                        url 'http://unlicense.org'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'rainer'
+                        name 'Rainer Kern'
+                        email 'rainer@systemkern.com'
+                        organization 'systemkern'
+                    }
+                    developer {
+                        id 'andres'
+                        name 'Andres Ausecha'
+                        email 'andres@systemkern.com'
+                        organization 'systemkern'
+                    }
+                }
+            }
         }
     }
 }
