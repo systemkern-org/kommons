@@ -801,3 +801,7 @@ iOSInjectionProject/
 **/build/
 
 # End of https://www.gitignore.io/api/osx,java,sass,unity,xcode,macos,maven,linux,matlab,gradle,kotlin,ionic3,android,angular,windows,eclipse,java-web,intellij,reactnative,androidstudio,xcodeinjection
+
+
+# Ignore file generated for tests
+/src/test/resources/osx.txt

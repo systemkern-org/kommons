@@ -1,3 +1,0 @@
-This is a nice test file
-it is created to assert,
-that file utility is reading files correctly
