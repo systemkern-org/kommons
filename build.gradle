@@ -47,6 +47,22 @@ test {
     useJUnitPlatform()
 }
 
+// Added becuase kommons has no main class
+bootJar {
+    enabled = false
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+// Compile all test classes with java 1.8
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
 signing {
     sign configurations.archives
 }
@@ -102,21 +118,5 @@ uploadArchives {
                 }
             }
         }
-    }
-}
-
-// Added becuase kommons has no main class
-bootJar {
-    enabled = false
-}
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
-// Compile all test classes with java 1.8  
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
 }
