@@ -2,9 +2,9 @@ language: java
 
 before_install:
   - chmod +x gradlew
-  - gpg --export-secret-keys >~/.gnupg/secring.gpg
   - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
   - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
+  - gpg --export-secret-keys >~/.gnupg/secring.gpg
 
 install: ./gradlew build
 
