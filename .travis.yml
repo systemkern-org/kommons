@@ -4,7 +4,7 @@ before_install:
   - chmod +x gradlew
   - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
   - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
-  - $GPG_EXECUTABLE --export-secret-keys $GPG_SECRET_KEYS > ~/.gnupg/secring.gpg
+  - $GPG_EXECUTABLE --no-default-keyring --keyring secring.gpg --fingerprint
   - ls ~/
 
 install: ./gradlew build
