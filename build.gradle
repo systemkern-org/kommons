@@ -10,6 +10,7 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.spring' version '1.3.30'
     id 'signing'
     id 'maven'
+    id 'info.solidsoft.pitest' version '1.4.0'
 }
 
 apply plugin: "kotlin-jpa"
@@ -74,12 +75,26 @@ artifacts {
     archives jar, javadocJar, sourcesJar
 }
 
+pitest {
+    targetClasses = ['com.systemkern.kommons.*']  //by default "${project.group}.*"
+    pitestVersion = '1.1.0' //not needed when a default PIT version should be used
+    threads = 4
+    outputFormats = ['XML', 'HTML']
+    timestampedReports = false
+}
+
+build.dependsOn 'pitest'
+
 //------------------------------------//
 
+/*
 signing {
     sign configurations.archives
 }
+*/
 
+
+/*
 uploadArchives {
     repositories {
         mavenDeployer {
@@ -133,3 +148,4 @@ uploadArchives {
         }
     }
 }
+*/
