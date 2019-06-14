@@ -43,4 +43,26 @@ internal class NodeListTest {
         }
         assertThat(filtered).containsAll(listOf(1, 2))
     }
+
+    @Test fun `Can traverse node `(){
+        document.getElementsByTagName("Employees")
+                .forEach {
+                    it.recursiveTraverse(
+                        attributeAction = {
+                            attributeTestFun(it)
+                        },
+                        nodeAction = {
+                            nodeTestFun(it)
+                        }
+                    )
+                }
+    }
+
+    fun attributeTestFun(n: Node) {
+        println(n.textContent)
+    }
+
+    fun nodeTestFun(n: Node){
+        println(n.textContent)
+    }
 }
