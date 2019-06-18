@@ -1,5 +1,23 @@
+plugins{
+    id "org.jetbrains.kotlin.multiplatform" version "1.3.31"
+}
+
+
 allprojects {
     repositories {
         mavenCentral()
+    }
+}
+
+kotlin{
+    //Declare platform which are targeted
+    targets{
+        jvm()
+    }
+
+    sourceSets {
+        'spring-boot-app'{
+
+        }
     }
 }

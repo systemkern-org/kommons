@@ -1,2 +1,3 @@
 rootProject.name = 'kommons'
 include 'spring-boot-app'
+enableFeaturePreview('GRADLE_METADATA')
